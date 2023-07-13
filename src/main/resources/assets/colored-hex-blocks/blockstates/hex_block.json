@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "colored-hex-blocks:block/hex_block"
+    }
+  }
+}
