@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "colored-hex-blocks:hex_block"
+        }
+    },
+    "result": {
+        "item": "colored-hex-blocks:hex_stairs",
+        "count": 4
+    }
+}

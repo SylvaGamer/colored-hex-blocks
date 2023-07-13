@@ -5,9 +5,13 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.BlockView;
+import net.shadowdragon.coloredhexblocks.block.HexBlockInterface;
+import org.jetbrains.annotations.Nullable;
 
-public class HexBlock extends Block implements BlockEntityProvider {
+public class HexBlock extends Block implements HexBlockInterface,BlockEntityProvider {
     public HexBlock(Settings settings) {
         super(settings);
     }
@@ -19,11 +23,11 @@ public class HexBlock extends Block implements BlockEntityProvider {
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         ItemStack stack = super.getPickStack(world, pos, state);
-        int color = HexBlockEntity.getColor(world, pos);
-        NbtCompound nbt = new NbtCompound();
-        nbt.putInt("color", color);
-        stack.setNbt(nbt);
-        return stack;
+        return pickBlock(world,pos,stack);
     }
 
+    @Override
+    public BlockState getAppearance(BlockState state, BlockRenderView renderView, BlockPos pos, Direction side, @Nullable BlockState sourceState, @Nullable BlockPos sourcePos) {
+        return super.getAppearance(state, renderView, pos, side, sourceState, sourcePos);
+    }
 }

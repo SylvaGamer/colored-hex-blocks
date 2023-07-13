@@ -18,6 +18,7 @@ public class HexItemGroups {
                 FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hex_blocks"))
                         .icon(() -> new ItemStack(ModHexBlocks.HEX_BLOCK)).entries((displayContext, entries) -> {
                             entries.add(ModHexBlocks.HEX_BLOCK);
+                            entries.add(ModHexBlocks.HEX_STAIRS);
                         }).build());
 
         public static void registerItemGroups(){
