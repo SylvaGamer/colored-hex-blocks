@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "colored-hex-blocks:hex_block"
+    "colored-hex-blocks:hex_block",
+    "colored-hex-blocks:hex_stairs"
   ]
 }

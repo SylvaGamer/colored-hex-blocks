@@ -1,20 +1,33 @@
 package net.shadowdragon.coloredhexblocks.block;
 
 import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
 
 public interface HexBlockInterface extends BlockEntityProvider {
 
+
+    @Override
+    public default BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new HexBlockEntity(pos, state);
+    }
+
     public default ItemStack pickBlock(BlockView world, BlockPos pos, ItemStack stack){
-        int color = HexBlockEntity.getColor(world, pos);
-        NbtCompound nbt = new NbtCompound();
-        nbt.putInt("color", color);
-        stack.setNbt(nbt);
+        HexBlockEntity blockEntity = ColoredHexBlocks.HEX_BLOCK_ENTITY.get(world,pos);
+        int color = HexBlockEntity.DEFAULT_COLOR;
+        if(blockEntity != null){
+            color = blockEntity.color;
+        }
+        NbtCompound nbt = stack.getNbt();
+        NbtCompound subNbt = stack.getOrCreateSubNbt("display");
+        subNbt.putInt("color", color);
         return stack;
     }
 }

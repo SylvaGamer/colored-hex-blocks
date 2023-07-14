@@ -26,9 +26,5 @@ public class HexStairsBlock extends StairsBlock implements HexBlockInterface,Blo
         ItemStack stack = super.getPickStack(world, pos, state);
         return pickBlock(world,pos,stack);
     }
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new HexBlockEntity(pos, state);
-    }
 
 }
