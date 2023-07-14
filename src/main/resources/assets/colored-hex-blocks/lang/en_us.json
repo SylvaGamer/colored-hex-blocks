@@ -1,5 +1,6 @@
 {
   "block.colored-hex-blocks.hex_block": "Hex Block",
   "block.colored-hex-blocks.hex_stairs": "Hex Stairs",
+  "block.colored-hex-blocks.hex_slab": "Hex Slab",
   "itemgroup.hex_blocks": "Hex Blocks"
 }

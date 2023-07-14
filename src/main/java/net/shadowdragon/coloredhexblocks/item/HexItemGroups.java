@@ -19,6 +19,7 @@ public class HexItemGroups {
                         .icon(() -> new ItemStack(ModHexBlocks.HEX_BLOCK)).entries((displayContext, entries) -> {
                             entries.add(ModHexBlocks.HEX_BLOCK);
                             entries.add(ModHexBlocks.HEX_STAIRS);
+                            entries.add(ModHexBlocks.HEX_SLAB);
                         }).build());
 
         public static void registerItemGroups(){

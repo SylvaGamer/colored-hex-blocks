@@ -9,7 +9,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
+import net.shadowdragon.coloredhexblocks.ColoredHexBlocksClient;
 import net.shadowdragon.coloredhexblocks.block.custom.HexBlock;
+import net.shadowdragon.coloredhexblocks.block.custom.HexSlabBlock;
 import net.shadowdragon.coloredhexblocks.block.custom.HexStairsBlock;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
@@ -19,6 +21,9 @@ public class ModHexBlocks {
         new HexBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
     public static final Block HEX_STAIRS = registerBlock("hex_stairs",
     new HexStairsBlock(HEX_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
+
+    public static final Block HEX_SLAB = registerBlock("hex_slab",
+        new HexSlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

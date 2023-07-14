@@ -22,23 +22,14 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
 
 
     public void onInitializeClient() {
-
-/*        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
-                HexBlockEntity.getColor(world,pos), ModHexBlocks.HEX_STAIRS);
-
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
-                HexBlockEntity.getColor(world,pos), ModHexBlocks.HEX_BLOCK);*/
-
         registerBlockColor(ModHexBlocks.HEX_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_STAIRS);
-
-
-        registerItemColor(ModHexBlocks.HEX_BLOCK);
-        registerItemColor(ModHexBlocks.HEX_STAIRS);
+        registerBlockColor(ModHexBlocks.HEX_SLAB);
     }
 
 
     private void registerBlockColor(Block ModHexBlocksItems) {
+        registerItemColor(ModHexBlocksItems);
         ColorProviderRegistry.BLOCK.register(new BlockColorProvider() {
             @Override
             public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
