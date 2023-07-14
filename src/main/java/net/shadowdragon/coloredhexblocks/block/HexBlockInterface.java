@@ -11,6 +11,9 @@ import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
 
 public interface HexBlockInterface extends BlockEntityProvider {
+    int color = HexBlockEntity.DEFAULT_COLOR;
+
+
 
 
     @Override
