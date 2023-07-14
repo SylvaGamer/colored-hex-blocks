@@ -25,6 +25,7 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
         registerBlockColor(ModHexBlocks.HEX_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_STAIRS);
         registerBlockColor(ModHexBlocks.HEX_SLAB);
+        registerBlockColor(ModHexBlocks.HEX_WALL_BLOCK);
     }
 
 
@@ -33,7 +34,6 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
         ColorProviderRegistry.BLOCK.register(new BlockColorProvider() {
             @Override
             public int getColor(BlockState state, @Nullable BlockRenderView world, @Nullable BlockPos pos, int tintIndex) {
-
                 int color = HexBlockEntity.getColor(world,pos);
                 return color;
             }

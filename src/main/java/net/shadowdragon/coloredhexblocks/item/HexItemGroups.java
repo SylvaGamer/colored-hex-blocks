@@ -20,6 +20,7 @@ public class HexItemGroups {
                             entries.add(ModHexBlocks.HEX_BLOCK);
                             entries.add(ModHexBlocks.HEX_STAIRS);
                             entries.add(ModHexBlocks.HEX_SLAB);
+                            entries.add(ModHexBlocks.HEX_WALL_BLOCK);
                         }).build());
 
         public static void registerItemGroups(){

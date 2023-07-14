@@ -2,5 +2,6 @@
   "block.colored-hex-blocks.hex_block": "Hex Block",
   "block.colored-hex-blocks.hex_stairs": "Hex Stairs",
   "block.colored-hex-blocks.hex_slab": "Hex Slab",
+  "block.colored-hex-blocks.hex_wall": "Hex Wall",
   "itemgroup.hex_blocks": "Hex Blocks"
 }

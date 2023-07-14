@@ -13,6 +13,7 @@ import net.shadowdragon.coloredhexblocks.ColoredHexBlocksClient;
 import net.shadowdragon.coloredhexblocks.block.custom.HexBlock;
 import net.shadowdragon.coloredhexblocks.block.custom.HexSlabBlock;
 import net.shadowdragon.coloredhexblocks.block.custom.HexStairsBlock;
+import net.shadowdragon.coloredhexblocks.block.custom.HexWallBlock;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
 
@@ -24,6 +25,9 @@ public class ModHexBlocks {
 
     public static final Block HEX_SLAB = registerBlock("hex_slab",
         new HexSlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
+
+    public static final Block HEX_WALL_BLOCK = registerBlock("hex_wall",
+            new HexWallBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

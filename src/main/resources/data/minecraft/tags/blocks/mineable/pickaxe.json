@@ -3,6 +3,7 @@
   "values": [
     "colored-hex-blocks:hex_block",
     "colored-hex-blocks:hex_slab",
+    "colored-hex-blocks:hex_wall",
     "colored-hex-blocks:hex_stairs"
   ]
 }
