@@ -9,8 +9,6 @@ import net.minecraft.world.BlockView;
 import net.shadowdragon.coloredhexblocks.block.HexBlockInterface;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
-
 public class HexBlock extends Block implements HexBlockInterface,BlockEntityProvider {
     public HexBlock(Settings settings) {
         super(settings);
