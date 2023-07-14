@@ -26,6 +26,8 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
         registerBlockColor(ModHexBlocks.HEX_STAIRS);
         registerBlockColor(ModHexBlocks.HEX_SLAB);
         registerBlockColor(ModHexBlocks.HEX_WALL_BLOCK);
+        registerBlockColor(ModHexBlocks.HEX_FENCE_BLOCK);
+        registerBlockColor(ModHexBlocks.HEX_FENCE_GATE_BLOCK);
     }
 
 

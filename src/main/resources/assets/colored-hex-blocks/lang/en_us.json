@@ -3,5 +3,7 @@
   "block.colored-hex-blocks.hex_stairs": "Hex Stairs",
   "block.colored-hex-blocks.hex_slab": "Hex Slab",
   "block.colored-hex-blocks.hex_wall": "Hex Wall",
+  "block.colored-hex-blocks.hex_fence": "Hex Fence",
+  "block.colored-hex-blocks.hex_fence_gate": "Hex Fence Gate",
   "itemgroup.hex_blocks": "Hex Blocks"
 }
