@@ -8,10 +8,10 @@
 		"ShadowDragon"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/ShadowDragonMinecraft/colored-hex-blocks/wiki",
+		"sources": "https://github.com/ShadowDragonMinecraft/colored-hex-blocks"
 	},
-	"license": "MIT",
+	"license": "GPL-3.0",
 	"icon": "assets/colored-hex-blocks/icon.png",
 	"environment": "*",
 	"entrypoints": {
