@@ -8,6 +8,7 @@ import net.minecraft.block.WoodType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.custom.*;
@@ -31,6 +32,12 @@ public class ModHexBlocks {
 
     public static final Block HEX_FENCE_GATE_BLOCK = registerBlock("hex_fence_gate",
             new HexFenceGateBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE), WoodType.ACACIA));
+
+    public static final Block HEX_GLASS_BLOCK = registerBlock("hex_glass",
+            new HexGlassBlock(DyeColor.WHITE, FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS)));
+
+    public static final Block HEX_GLASS_PANE_BLOCK = registerBlock("hex_glass_pane",
+            new HexGlassPaneBlock(DyeColor.WHITE,FabricBlockSettings.copyOf(Blocks.WHITE_STAINED_GLASS_PANE)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

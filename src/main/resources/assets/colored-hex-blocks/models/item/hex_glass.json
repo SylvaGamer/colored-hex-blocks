@@ -1,0 +1,6 @@
+{
+  "parent": "colored-hex-blocks:block/hex_glass",
+  "textures": {
+    "layer0": "colored-hex-blocks:block/hex_glass"
+  }
+}

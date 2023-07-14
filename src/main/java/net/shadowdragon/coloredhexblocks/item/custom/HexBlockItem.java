@@ -23,6 +23,7 @@ public class HexBlockItem extends BlockItem implements DyeableItem{
         super.onCraft(stack, world, player);
     }
 
+
     public HexBlockItem(Block block, Settings settings) {
         super(block, settings);
     }

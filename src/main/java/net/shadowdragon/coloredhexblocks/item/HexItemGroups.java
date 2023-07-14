@@ -22,6 +22,8 @@ public class HexItemGroups {
                             entries.add(ModHexBlocks.HEX_WALL_BLOCK);
                             entries.add(ModHexBlocks.HEX_FENCE_BLOCK);
                             entries.add(ModHexBlocks.HEX_FENCE_GATE_BLOCK);
+                            entries.add(ModHexBlocks.HEX_GLASS_BLOCK);
+                            entries.add(ModHexBlocks.HEX_GLASS_PANE_BLOCK);
                         }).build());
 
         public static void registerItemGroups(){

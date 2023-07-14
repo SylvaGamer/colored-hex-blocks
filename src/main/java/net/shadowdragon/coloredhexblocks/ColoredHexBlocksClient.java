@@ -1,8 +1,10 @@
 package net.shadowdragon.coloredhexblocks;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
@@ -14,12 +16,16 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
 
 
     public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(ModHexBlocks.HEX_GLASS_PANE_BLOCK, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModHexBlocks.HEX_GLASS_BLOCK, RenderLayer.getTranslucent());
         registerBlockColor(ModHexBlocks.HEX_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_STAIRS);
         registerBlockColor(ModHexBlocks.HEX_SLAB);
         registerBlockColor(ModHexBlocks.HEX_WALL_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_FENCE_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_FENCE_GATE_BLOCK);
+        registerBlockColor(ModHexBlocks.HEX_GLASS_BLOCK);
+        registerBlockColor(ModHexBlocks.HEX_GLASS_PANE_BLOCK);
     }
 
 

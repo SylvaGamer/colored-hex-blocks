@@ -1,0 +1,16 @@
+{
+  "key": {
+    "#": {
+      "item": "colored-hex-blocks:hex_glass"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "colored-hex-blocks:hex_glass_pane",
+    "count": 16
+  },
+  "type": "minecraft:crafting_shaped"
+}
