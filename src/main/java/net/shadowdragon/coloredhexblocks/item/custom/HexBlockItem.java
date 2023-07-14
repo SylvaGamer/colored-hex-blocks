@@ -49,12 +49,13 @@ public class HexBlockItem extends BlockItem implements DyeableItem{
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
 
 
-        var c = getColor(itemStack);
+        /*var c = getColor(itemStack);
         var r = Math.floor(c / (256*256));
         var g = Math.floor(c / 256) % 256;
-        var b = c % 256;
+        var b = c % 256;*/
 
         tooltip.add(Text.translatable("Color: " + getColor(itemStack)));
+
         /*
         tooltip.add(Text.translatable("Red: "  + r).formatted(Formatting.RED));
         tooltip.add(Text.translatable("Green: " + g).formatted(Formatting.GREEN));

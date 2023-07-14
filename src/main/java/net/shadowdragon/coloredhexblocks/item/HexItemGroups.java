@@ -12,7 +12,6 @@ import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 
 public class HexItemGroups {
 
-
         public static final ItemGroup HEX_GROUP = Registry.register(Registries.ITEM_GROUP,
                 new Identifier(ColoredHexBlocks.MOD_ID, "hex_blocks"),
                 FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hex_blocks"))

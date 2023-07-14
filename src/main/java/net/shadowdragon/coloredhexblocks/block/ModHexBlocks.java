@@ -4,14 +4,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
-import net.shadowdragon.coloredhexblocks.ColoredHexBlocksClient;
 import net.shadowdragon.coloredhexblocks.block.custom.*;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
