@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "colored-hex-blocks:hex_block"
-    },
-    "result": "colored-hex-blocks:hex_stairs",
-    "count": 1
-}
