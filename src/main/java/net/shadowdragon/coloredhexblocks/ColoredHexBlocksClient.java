@@ -8,7 +8,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
 

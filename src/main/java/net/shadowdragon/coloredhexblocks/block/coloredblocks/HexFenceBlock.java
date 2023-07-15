@@ -1,10 +1,9 @@
-package net.shadowdragon.coloredhexblocks.block.custom;
+package net.shadowdragon.coloredhexblocks.block.coloredblocks;
 
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.StainedGlassPaneBlock;
+import net.minecraft.block.FenceBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockRenderView;
@@ -12,12 +11,10 @@ import net.minecraft.world.BlockView;
 import net.shadowdragon.coloredhexblocks.block.HexBlockInterface;
 import org.jetbrains.annotations.Nullable;
 
-public class HexGlassPaneBlock extends StainedGlassPaneBlock implements HexBlockInterface,BlockEntityProvider {
-
-    public HexGlassPaneBlock(DyeColor color, Settings settings) {
-        super(color, settings);
+public class HexFenceBlock extends FenceBlock implements HexBlockInterface,BlockEntityProvider {
+    public HexFenceBlock(Settings settings) {
+        super(settings);
     }
-
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         ItemStack stack = super.getPickStack(world, pos, state);

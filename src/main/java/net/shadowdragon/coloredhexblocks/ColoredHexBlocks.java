@@ -7,7 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.HexItemGroups;
 import net.shadowdragon.coloredhexblocks.item.HexItems;
 import org.slf4j.Logger;

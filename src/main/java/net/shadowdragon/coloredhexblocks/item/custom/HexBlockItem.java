@@ -10,7 +10,7 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
-import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import java.util.List;
 
 public class HexBlockItem extends BlockItem implements DyeableItem{

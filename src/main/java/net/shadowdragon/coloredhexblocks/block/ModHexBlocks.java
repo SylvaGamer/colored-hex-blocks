@@ -11,7 +11,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.custom.*;
+import net.shadowdragon.coloredhexblocks.block.coloredblocks.*;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
 

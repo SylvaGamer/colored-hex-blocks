@@ -1,7 +1,8 @@
-package net.shadowdragon.coloredhexblocks.block.custom;
+package net.shadowdragon.coloredhexblocks.block.coloredblocks;
 
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockRenderView;
@@ -9,10 +10,10 @@ import net.minecraft.world.BlockView;
 import net.shadowdragon.coloredhexblocks.block.HexBlockInterface;
 import org.jetbrains.annotations.Nullable;
 
-public class HexFenceGateBlock extends FenceGateBlock implements HexBlockInterface,BlockEntityProvider {
+public class HexGlassBlock extends StainedGlassBlock implements HexBlockInterface,BlockEntityProvider {
 
-    public HexFenceGateBlock(Settings settings, WoodType type) {
-        super(settings, type);
+    public HexGlassBlock(DyeColor color, Settings settings) {
+        super(color, settings);
     }
 
     @Override

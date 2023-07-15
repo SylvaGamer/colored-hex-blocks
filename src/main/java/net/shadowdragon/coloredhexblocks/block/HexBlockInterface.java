@@ -8,7 +8,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.custom.HexBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 
 public interface HexBlockInterface extends BlockEntityProvider {
     @Override
