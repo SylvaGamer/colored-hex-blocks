@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"net.shadowdragon.coloredhexblocks.ColoredHexBlocksClient"
+		],
+		"rei_client": [
+			"net.shadowdragon.coloredhexblocks.compat.ColoredHexBlocksREIClientPlugin"
 		]
 	},
 	"mixins": [

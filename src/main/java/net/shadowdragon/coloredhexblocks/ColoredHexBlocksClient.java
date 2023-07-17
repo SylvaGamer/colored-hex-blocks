@@ -4,12 +4,15 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
+import net.shadowdragon.coloredhexblocks.screen.DyingStationScreen;
+import net.shadowdragon.coloredhexblocks.screen.HexScreenHandler;
 
 
 public class ColoredHexBlocksClient implements ClientModInitializer {
@@ -26,6 +29,8 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
         registerBlockColor(ModHexBlocks.HEX_FENCE_GATE_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_GLASS_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_GLASS_PANE_BLOCK);
+
+        HandledScreens.register(HexScreenHandler.DYING_STATION_SCREEN_HANDLER, DyingStationScreen::new);
     }
 
 

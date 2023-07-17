@@ -1,0 +1,11 @@
+{
+  "type": "colored-hex-blocks:dying_station",
+  "ingredients": [
+    {
+      "item": "colored-hex-blocks:hex_fence"
+    }
+  ],
+  "output": {
+    "item": "colored-hex-blocks:hex_fence"
+  }
+}

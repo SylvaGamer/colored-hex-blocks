@@ -1,8 +1,8 @@
-// 1.20	2023-07-15T07:57:47.4296631	Colored Hex Blocks/Tags for minecraft:block
+// 1.20	2023-07-16T12:19:44.9840055	Colored Hex Blocks/Tags for minecraft:block
 5261dc0a894f392853b8d9981f1ef8cd7c6332f2 data\minecraft\tags\blocks\impermeable.json
 36a90039892087937e1f3e471c304f0176cd7ceb data\minecraft\tags\blocks\fences.json
 edeb0cd8733ad09e2fce68a9ba30f3fb58e945dd data\minecraft\tags\blocks\mineable\pickaxe.json
 2df3744cace275951b2e87f029017e27e84fe2da data\minecraft\tags\blocks\stairs.json
 d3d3f88b71239bec47685e3741363e19c705c3be data\minecraft\tags\blocks\fence_gates.json
-f241b7d2615fac83e1d4d6277c7ab65b82d1cfb1 data\minecraft\tags\blocks\slabs.json
 dd738be556b663dc0557da3060bbc96fd21734bb data\minecraft\tags\blocks\walls.json
+f241b7d2615fac83e1d4d6277c7ab65b82d1cfb1 data\minecraft\tags\blocks\slabs.json

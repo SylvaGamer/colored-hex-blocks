@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hex_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "colored-hex-blocks:hex_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "colored-hex-blocks:hex_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_hex_slab"
+    ],
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "colored-hex-blocks:hex_slab"
+    ]
+  },
+  "sends_telemetry_event": true
+}

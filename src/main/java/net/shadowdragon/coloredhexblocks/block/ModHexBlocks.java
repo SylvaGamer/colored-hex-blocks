@@ -12,10 +12,13 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.coloredblocks.*;
+import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlock;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 
 
 public class ModHexBlocks {
+    public static final Block DYING_STATION = registerBlock("dying_station",
+            new DyingStationBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).nonOpaque()));
     public static final Block HEX_BLOCK = registerBlock("hex_block",
         new HexBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE)));
     public static final Block HEX_STAIRS = registerBlock("hex_stairs",

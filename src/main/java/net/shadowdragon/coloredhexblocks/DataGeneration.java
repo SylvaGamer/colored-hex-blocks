@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.shadowdragon.coloredhexblocks.datagen.BlockTagProvider;
 import net.shadowdragon.coloredhexblocks.datagen.ItemTagProvider;
+import net.shadowdragon.coloredhexblocks.datagen.ModelProvider;
 import net.shadowdragon.coloredhexblocks.datagen.RecipeProvider;
 
 public class DataGeneration implements DataGeneratorEntrypoint {
@@ -15,5 +16,6 @@ public class DataGeneration implements DataGeneratorEntrypoint {
         pack.addProvider(BlockTagProvider::new);
         pack.addProvider(ItemTagProvider::new);
         pack.addProvider(RecipeProvider::new);
+        pack.addProvider(ModelProvider::new);
     }
 }
