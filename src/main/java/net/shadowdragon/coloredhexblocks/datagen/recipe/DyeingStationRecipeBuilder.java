@@ -2,7 +2,6 @@ package net.shadowdragon.coloredhexblocks.datagen.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.CriterionConditions;
@@ -15,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.recipe.HexBlockRecipe;
@@ -25,13 +23,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class DyingStationRecipeBuilder implements CraftingRecipeJsonBuilder {
+public class DyeingStationRecipeBuilder implements CraftingRecipeJsonBuilder {
     private final Item result;
     private final Ingredient ingredient;
     private final int count;
     private final Advancement.Builder advancement = Advancement.Builder.create();
 
-    public DyingStationRecipeBuilder(ItemConvertible ingredient, ItemConvertible result, int count) {
+    public DyeingStationRecipeBuilder(ItemConvertible ingredient, ItemConvertible result, int count) {
         this.ingredient = Ingredient.ofItems(ingredient);
         this.result = result.asItem();
         this.count = count;

@@ -6,13 +6,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.craftingstation.DyeingStationBlockEntity;
 
 public class ModHexBlockEntities {
-    public static final BlockEntityType<DyingStationBlockEntity> DYING_STATION_BE =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(ColoredHexBlocks.MOD_ID, "dying_station_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(DyingStationBlockEntity::new,
-                            ModHexBlocks.DYING_STATION).build(null));
+    public static final BlockEntityType<DyeingStationBlockEntity> DYEING_STATION_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(ColoredHexBlocks.MOD_ID, "dyeing_station_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(DyeingStationBlockEntity::new,
+                            ModHexBlocks.DYEING_STATION).build(null));
     public static void registerBlockEntities(){
         ColoredHexBlocks.LOGGER.info("Registering Block Entities for " + ColoredHexBlocks.MOD_ID);
     }

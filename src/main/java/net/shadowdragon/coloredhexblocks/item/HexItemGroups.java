@@ -16,7 +16,7 @@ public class HexItemGroups {
                 new Identifier(ColoredHexBlocks.MOD_ID, "hex_blocks"),
                 FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hex_blocks"))
                         .icon(() -> new ItemStack(ModHexBlocks.HEX_BLOCK)).entries((displayContext, entries) -> {
-                            entries.add(ModHexBlocks.DYING_STATION);
+                            entries.add(ModHexBlocks.DYEING_STATION);
                             entries.add(ModHexBlocks.HEX_BLOCK);
                             entries.add(ModHexBlocks.HEX_STAIRS);
                             entries.add(ModHexBlocks.HEX_SLAB);

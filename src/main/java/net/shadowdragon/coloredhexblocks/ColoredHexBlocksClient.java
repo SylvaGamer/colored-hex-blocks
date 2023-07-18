@@ -12,7 +12,7 @@ import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.custom.HexBlockItem;
 import net.shadowdragon.coloredhexblocks.networking.HexMessages;
-import net.shadowdragon.coloredhexblocks.screen.DyingStationScreen;
+import net.shadowdragon.coloredhexblocks.screen.DyeingStationScreen;
 import net.shadowdragon.coloredhexblocks.screen.HexScreenHandler;
 
 
@@ -31,7 +31,7 @@ public class ColoredHexBlocksClient implements ClientModInitializer {
         registerBlockColor(ModHexBlocks.HEX_GLASS_BLOCK);
         registerBlockColor(ModHexBlocks.HEX_GLASS_PANE_BLOCK);
 
-        HandledScreens.register(HexScreenHandler.DYING_STATION_SCREEN_HANDLER, DyingStationScreen::new);
+        HandledScreens.register(HexScreenHandler.DYEING_STATION_SCREEN_HANDLER, DyeingStationScreen::new);
         HexMessages.registerS2CPackets();
     }
 

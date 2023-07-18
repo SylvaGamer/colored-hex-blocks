@@ -17,10 +17,10 @@ import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DyingStationCategory implements DisplayCategory<BasicDisplay> {
+public class DyeingStationCategory implements DisplayCategory<BasicDisplay> {
     public static final Identifier TEXTURE =
-            new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dying_station_gui.png");
-    public static final CategoryIdentifier<DyingStationDisplay> DYING_STATION =
+            new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dyeing_station_gui.png");
+    public static final CategoryIdentifier<DyeingStationDisplay> DYING_STATION =
             CategoryIdentifier.of(ColoredHexBlocks.MOD_ID,"dying_station");
     @Override
     public CategoryIdentifier<? extends BasicDisplay> getCategoryIdentifier() {
@@ -34,7 +34,7 @@ public class DyingStationCategory implements DisplayCategory<BasicDisplay> {
 
     @Override
     public Renderer getIcon() {
-        return EntryStacks.of(ModHexBlocks.DYING_STATION.asItem().getDefaultStack());
+        return EntryStacks.of(ModHexBlocks.DYEING_STATION.asItem().getDefaultStack());
     }
 
     @Override

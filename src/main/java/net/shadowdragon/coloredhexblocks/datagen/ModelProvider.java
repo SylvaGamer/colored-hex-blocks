@@ -13,7 +13,7 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModHexBlocks.DYING_STATION);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModHexBlocks.DYEING_STATION);
 
     }
 

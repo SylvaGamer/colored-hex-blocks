@@ -6,18 +6,17 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.shadowdragon.coloredhexblocks.recipe.HexBlockRecipe;
-import net.shadowdragon.coloredhexblocks.recipe.HexRecipes;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DyingStationDisplay extends BasicDisplay {
-        public DyingStationDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs) {
+public class DyeingStationDisplay extends BasicDisplay {
+        public DyeingStationDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs) {
                 super(inputs, outputs);
         }
 
-        public DyingStationDisplay(HexBlockRecipe recipe){
+        public DyeingStationDisplay(HexBlockRecipe recipe){
                 super(getInputList(recipe), List.of(EntryIngredient.of(EntryStacks.of(recipe.getOutput(null)))));
 
         }
@@ -31,6 +30,6 @@ public class DyingStationDisplay extends BasicDisplay {
 
         @Override
         public CategoryIdentifier<?> getCategoryIdentifier() {
-                return DyingStationCategory.DYING_STATION;
+                return DyeingStationCategory.DYING_STATION;
         }
 }

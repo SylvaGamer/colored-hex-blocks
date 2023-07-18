@@ -13,25 +13,26 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
 import net.shadowdragon.coloredhexblocks.networking.HexMessages;
+import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.glfw.GLFW;
 
 
 
-public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler> {
+public class DyeingStationScreen extends HandledScreen<DyeingStationScreenHandler> {
     public static boolean isValid1 = true;
     public static boolean isValid2 = true;
     public static boolean isValid3 = true;
     private static final Identifier TEXTURE =
-            new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dying_station_gui.png");
+            new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dyeing_station_gui.png");
 
     private TextFieldWidget redField;
     private TextFieldWidget greenField;
     private TextFieldWidget blueField;
 
     private int color;
-    private int redColor;
-    private int blueColor;
-    private int greenColor;
+    private int redColor = 0;
+    private int blueColor = 0;
+    private int greenColor = 0;
 
 
     @Override
@@ -42,21 +43,19 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         super.handledScreenTick();
     }
 
-    public DyingStationScreen(DyingStationScreenHandler handler, PlayerInventory inventory, Text title) {
+    public DyeingStationScreen(DyeingStationScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
 
     public static boolean isNumeric(String string) {
+
         int intValue;
-
         //System.out.println(String.format("Parsing string: \"%s\"", string));
-
         if (string == null || string.equals("")) {
             //System.out.println("String cannot be parsed, it is null or empty.");
             return false;
         }
-
         try {
             intValue = Integer.parseInt(string);
             return true;
@@ -78,7 +77,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.redField.setEditableColor(-1);
         this.redField.setUneditableColor(-1);
         this.redField.setDrawsBackground(false);
-        this.redField.setText(String.valueOf(redColor));
+        this.redField.setText("");
+        this.redField.setPlaceholder(Text.literal("0"));
         //System.out.println(String.valueOf(redColor) + "string");
         this.redField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.redField);
@@ -90,7 +90,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.greenField.setEditableColor(-1);
         this.greenField.setUneditableColor(-1);
         this.greenField.setDrawsBackground(false);
-        this.greenField.setText(String.valueOf(greenColor));
+        this.greenField.setText("");
+        this.greenField.setPlaceholder(Text.literal("0"));
         //System.out.println(String.valueOf(greenColor) + "string");
         this.greenField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.greenField);
@@ -102,7 +103,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.blueField.setEditableColor(-1);
         this.blueField.setUneditableColor(-1);
         this.blueField.setDrawsBackground(false);
-        this.blueField.setText(String.valueOf(blueColor));
+        this.blueField.setText("");
+        this.blueField.setPlaceholder(Text.literal("0"));
         //System.out.println(String.valueOf(blueColor) + "string");
         this.blueField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.blueField);
@@ -110,15 +112,16 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
     }
 
     private void onChanged(String field) {
-        if(isNumeric(this.redField.getText())){
+
+        if(StringUtils.isNumeric(this.redField.getText())){
             redColor = Integer.parseInt(this.redField.getText());
             isValid1 = redColor <= 255;
-            System.out.println(redColor);
+
         } else{
             isValid1 = false;
         }
 
-        if(isNumeric(this.greenField.getText())) {
+        if(StringUtils.isNumeric(this.greenField.getText())) {
             greenColor = Integer.parseInt(this.greenField.getText());
             isValid2 = greenColor <= 255;
 
@@ -126,17 +129,17 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
             isValid2 = false;
         }
 
-        if(isNumeric(this.blueField.getText())) {
+        if(StringUtils.isNumeric(this.blueField.getText())) {
             blueColor = Integer.parseInt(this.blueField.getText());
             isValid3 = blueColor <= 255;
         } else{
             isValid3 = false;
         }
 
-        color = redColor * 65536 + greenColor * 256 + blueColor;
+        color = (redColor * 65536) + (greenColor * 256) + blueColor;
         int[] array = new int[]{color};
         ClientPlayNetworking.send(HexMessages.COLOR_ID, PacketByteBufs.create().writeIntArray(array));
-        handler.setNewColor(color);
+
 
     }
 
@@ -189,7 +192,7 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
             validPacket = true;
         }
         ClientPlayNetworking.send(HexMessages.VALID_ID, PacketByteBufs.create().writeString(String.valueOf(validPacket)));
-        handler.setNewColor(color);
+
     }
 
     private void renderText(DrawContext context, int x, int y){

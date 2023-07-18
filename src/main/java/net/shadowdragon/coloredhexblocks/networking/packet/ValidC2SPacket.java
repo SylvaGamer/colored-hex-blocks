@@ -5,7 +5,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.shadowdragon.coloredhexblocks.screen.DyingStationScreenHandler;
+import net.shadowdragon.coloredhexblocks.screen.DyeingStationScreenHandler;
 
 public class ValidC2SPacket {
     public static void recive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler,
@@ -14,10 +14,9 @@ public class ValidC2SPacket {
         String string = buf.readString();
 
         if(string.matches("false")){
-            DyingStationScreenHandler.validPacket = false;
+            DyeingStationScreenHandler.validPacket = false;
         } else{
-            DyingStationScreenHandler.validPacket = true;
+            DyeingStationScreenHandler.validPacket = true;
         }
-
     }
 }

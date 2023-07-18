@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "colored-hex-blocks:block/dying_station_brush",
-		"2": "colored-hex-blocks:block/dying_station_bucket",
-		"4": "colored-hex-blocks:block/dying_station_legs",
-		"5": "colored-hex-blocks:block/dying_station_surface",
-		"6": "colored-hex-blocks:block/dying_station_sides"
+		"1": "colored-hex-blocks:block/dyeing_station_brush",
+		"2": "colored-hex-blocks:block/dyeing_station_bucket",
+		"4": "colored-hex-blocks:block/dyeing_station_legs",
+		"5": "colored-hex-blocks:block/dyeing_station_surface",
+		"6": "colored-hex-blocks:block/dyeing_station_sides"
 	},
 	"elements": [
 		{

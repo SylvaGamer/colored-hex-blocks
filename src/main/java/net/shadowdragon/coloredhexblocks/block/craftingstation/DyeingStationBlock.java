@@ -21,9 +21,9 @@ import net.minecraft.world.World;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
-public class DyingStationBlock extends BlockWithEntity implements BlockEntityProvider {
+public class DyeingStationBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    public DyingStationBlock(Settings settings) {
+    public DyeingStationBlock(Settings settings) {
         super(settings);
     }
 
@@ -46,7 +46,7 @@ public class DyingStationBlock extends BlockWithEntity implements BlockEntityPro
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new DyingStationBlockEntity(pos, state);
+        return new DyeingStationBlockEntity(pos, state);
     }
 
     @Override
@@ -58,8 +58,8 @@ public class DyingStationBlock extends BlockWithEntity implements BlockEntityPro
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof DyingStationBlockEntity) {
-                ItemScatterer.spawn(world, pos, (DyingStationBlockEntity)blockEntity);
+            if (blockEntity instanceof DyeingStationBlockEntity) {
+                ItemScatterer.spawn(world, pos, (DyeingStationBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -69,7 +69,7 @@ public class DyingStationBlock extends BlockWithEntity implements BlockEntityPro
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((DyingStationBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((DyeingStationBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
@@ -82,6 +82,6 @@ public class DyingStationBlock extends BlockWithEntity implements BlockEntityPro
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModHexBlockEntities.DYING_STATION_BE, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1,pos,state1));
+        return checkType(type, ModHexBlockEntities.DYEING_STATION_BE, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1,pos,state1));
     }
 }

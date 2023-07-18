@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "colored-hex-blocks:block/dyeing_station",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "colored-hex-blocks:block/dyeing_station"
+    },
+    "facing=south": {
+      "model": "colored-hex-blocks:block/dyeing_station",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "colored-hex-blocks:block/dyeing_station",
+      "y": 270
+    }
+  }
+}

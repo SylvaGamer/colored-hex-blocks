@@ -15,20 +15,15 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlockEntities;
-import net.shadowdragon.coloredhexblocks.screen.DyingStationScreenHandler;
+import net.shadowdragon.coloredhexblocks.screen.DyeingStationScreenHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class DyingStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory{
+public class DyeingStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory{
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
 
-    private static final int INPUT_SLOT = 1;
-    private static final int DYE_SLOT = 0;
-    private  static final int OUTPUT_SLOT = 2;
 
-
-
-    public DyingStationBlockEntity(BlockPos pos, BlockState state) {
-        super(ModHexBlockEntities.DYING_STATION_BE, pos, state);
+    public DyeingStationBlockEntity(BlockPos pos, BlockState state) {
+        super(ModHexBlockEntities.DYEING_STATION_BE, pos, state);
     }
 
 
@@ -66,7 +61,7 @@ public class DyingStationBlockEntity extends BlockEntity implements ExtendedScre
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new DyingStationScreenHandler(syncId, playerInventory, this);
+        return new DyeingStationScreenHandler(syncId, playerInventory, this);
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {

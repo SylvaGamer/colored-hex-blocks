@@ -10,10 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlockEntity;
+import net.shadowdragon.coloredhexblocks.block.craftingstation.DyeingStationBlockEntity;
 
-public class DyingStationScreenHandler extends ScreenHandler {
-    public int newColor;
+public class DyeingStationScreenHandler extends ScreenHandler {
     public static int color;
     public static boolean validPacket;
 
@@ -24,13 +23,13 @@ public class DyingStationScreenHandler extends ScreenHandler {
         @Override
         public void markDirty() {
             super.markDirty();
-            DyingStationScreenHandler.this.onContentChanged(this);
-            DyingStationScreenHandler.this.contentsChangedListener.run();
+            DyeingStationScreenHandler.this.onContentChanged(this);
+            DyeingStationScreenHandler.this.contentsChangedListener.run();
         }
     };
     final CraftingResultInventory output = new CraftingResultInventory();
     private final Inventory inventory;
-    public final DyingStationBlockEntity blockEntity;
+    public final DyeingStationBlockEntity blockEntity;
     Slot inputSlot;
     final Slot outputSlot;
     final Slot dyeSlot;
@@ -41,17 +40,17 @@ public class DyingStationScreenHandler extends ScreenHandler {
 
 
 
-    protected DyingStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
+    protected DyeingStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
         playerInventory = inventory;
     }
 
-    public DyingStationScreenHandler(int syncId, PlayerInventory playerInventory,
-                                     BlockEntity blockEntity) {
-        super(HexScreenHandler.DYING_STATION_SCREEN_HANDLER, syncId);
+    public DyeingStationScreenHandler(int syncId, PlayerInventory playerInventory,
+                                      BlockEntity blockEntity) {
+        super(HexScreenHandler.DYEING_STATION_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity),3);
         this.inventory = (Inventory) blockEntity;
-        this.blockEntity = ((DyingStationBlockEntity) blockEntity);
+        this.blockEntity = ((DyeingStationBlockEntity) blockEntity);
         this.inputSlot = this.addSlot(new Slot(this.input, 0, 62, 50));
         this.outputSlot = this.addSlot(new Slot(this.output, 1,116,50){
 
@@ -65,9 +64,9 @@ public class DyingStationScreenHandler extends ScreenHandler {
             @Override
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
                 stack.onCraft(player.getWorld(), player, stack.getCount());
-                ItemStack itemStack = DyingStationScreenHandler.this.inputSlot.takeStack(stack.getCount());
+                ItemStack itemStack = DyeingStationScreenHandler.this.inputSlot.takeStack(stack.getCount());
                 if(!itemStack.isEmpty()){
-                    DyingStationScreenHandler.this.populateResult();
+                    DyeingStationScreenHandler.this.populateResult();
                 }
                 super.onTakeItem(player, stack);
             }
@@ -161,20 +160,6 @@ public class DyingStationScreenHandler extends ScreenHandler {
         this.sendContentUpdates();
     }
 
-    public boolean setNewColor(int color) {
-        if (!validPacket || color == this.newColor) {
-            return false;
-        }
-        this.newColor = color;
-        if (this.getSlot(2).hasStack()) {
-            ItemStack itemStack = this.getSlot(2).getStack();
-            itemStack.getOrCreateSubNbt("display").putInt("color", color);
-        }
-
-        this.updateResult();
-        return true;
-
-    }
 
     private void updateResult() {
         ItemStack itemStack = this.inputSlot.getStack();
@@ -188,6 +173,4 @@ public class DyingStationScreenHandler extends ScreenHandler {
             this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
         }
     }
-
-
 }
