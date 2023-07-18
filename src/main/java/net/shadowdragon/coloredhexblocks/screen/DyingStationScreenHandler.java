@@ -15,10 +15,9 @@ import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlock
 import java.util.List;
 
 public class DyingStationScreenHandler extends ScreenHandler {
-    private final Property redProperty = Property.create();
-    private final Property blueProperty = Property.create();
-    private final Property greenProperty = Property.create();
-    private final Property colorProperty = Property.create();
+    public static int color;
+
+
     private ItemStack inputStack = ItemStack.EMPTY;
     Runnable contentsChangedListener = () -> {};
     public final Inventory input = new SimpleInventory(1){
@@ -64,7 +63,7 @@ public class DyingStationScreenHandler extends ScreenHandler {
             @Override
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
                 stack.onCraft(player.getWorld(), player, stack.getCount());
-                ItemStack itemStack = DyingStationScreenHandler.this.inputSlot.takeStack(1);
+                ItemStack itemStack = DyingStationScreenHandler.this.inputSlot.takeStack(stack.getCount());
                 if(!itemStack.isEmpty()){
                     DyingStationScreenHandler.this.populateResult();
                 }
@@ -83,12 +82,6 @@ public class DyingStationScreenHandler extends ScreenHandler {
         addPlayerInventory(playerInventory);
 
 
-        this.addProperty(this.colorProperty);
-        this.addProperty(this.redProperty);
-        this.addProperty(this.blueProperty);
-        this.addProperty(this.greenProperty);
-
-
     }
 
     private void populateResult() {
@@ -98,45 +91,11 @@ public class DyingStationScreenHandler extends ScreenHandler {
 
     }
 
-    public int getRedColor(){
-        this.sendContentUpdates();
-        return redProperty.get();
-    }
-
-    public int getGreenColor(){
-        this.sendContentUpdates();
-        return greenProperty.get();
-    }
-    public int getBlueColor(){
-        this.sendContentUpdates();
-        return blueProperty.get();
-    }
 
     @Override
     public boolean onButtonClick(PlayerEntity player, int id) {
         this.populateResult();
         return true;
-    }
-
-    public void setRedColor(int redColor){
-        System.out.println(redColor + " old red");
-        this.redProperty.set(redColor);
-        onContentChanged(this.input);
-        System.out.println(this.redProperty.get() + " new red");
-    }
-
-    public void setGreenColor(int greenColor){
-        System.out.println(greenColor + " old green");
-        this.greenProperty.set(greenColor);
-        onContentChanged(this.input);
-        System.out.println(this.greenProperty.get() + " new green");
-
-    }
-    public void setBlueColor(int blueColor){
-        System.out.println(blueColor + " old blue");
-        this.blueProperty.set(blueColor);
-        onContentChanged(this.input);
-        System.out.println(this.blueProperty.get() + " new blue");
     }
 
 
@@ -185,15 +144,23 @@ public class DyingStationScreenHandler extends ScreenHandler {
     @Override
     public void onContentChanged(Inventory inventory) {
         ItemStack itemStack = this.inputSlot.getStack();
+        if(itemStack.isEmpty()){
+            this.outputSlot.setStack(ItemStack.EMPTY);
+        }
         if (!itemStack.isOf(this.inputStack.getItem())) {
-            this.inputStack = itemStack.copy();
+            //this.inputStack = itemStack.copy();
+            //this.outputSlot.setStack(this.inputSlot.getStack());
 
-            this.colorProperty.set(this.redProperty.get() * 65536 + this.greenProperty.get() * 256 + this.blueProperty.get());
-            this.outputSlot.setStack(this.inputSlot.getStack());
-            System.out.println(colorProperty.get() + "The Color property should be this - - - - - -");
+            ItemStack newStack = this.inputSlot.getStack().copy();
+            this.outputSlot.setStack(newStack);
+            this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
+            System.out.println(color + " The Color property should be this - - - - - -");
         }
         this.sendContentUpdates();
     }
+
+
+
 
 
 

@@ -3,6 +3,7 @@ package net.shadowdragon.coloredhexblocks.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -13,6 +14,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
+import net.shadowdragon.coloredhexblocks.networking.HexMessages;
 import org.lwjgl.glfw.GLFW;
 
 
@@ -27,6 +29,11 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
     private TextFieldWidget redField;
     private TextFieldWidget greenField;
     private TextFieldWidget blueField;
+
+    private int color;
+    private int redColor;
+    private int blueColor;
+    private int greenColor;
 
 
     @Override
@@ -73,8 +80,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.redField.setEditableColor(-1);
         this.redField.setUneditableColor(-1);
         this.redField.setDrawsBackground(false);
-        this.redField.setText(String.valueOf(handler.getRedColor()));
-        System.out.println(String.valueOf(handler.getRedColor()) + "string");
+        this.redField.setText(String.valueOf(redColor));
+        //System.out.println(String.valueOf(redColor) + "string");
         this.redField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.redField);
 
@@ -85,8 +92,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.greenField.setEditableColor(-1);
         this.greenField.setUneditableColor(-1);
         this.greenField.setDrawsBackground(false);
-        this.greenField.setText(String.valueOf(handler.getGreenColor()));
-        System.out.println(String.valueOf(handler.getGreenColor()) + "string");
+        this.greenField.setText(String.valueOf(greenColor));
+        //System.out.println(String.valueOf(greenColor) + "string");
         this.greenField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.greenField);
 
@@ -97,9 +104,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.blueField.setEditableColor(-1);
         this.blueField.setUneditableColor(-1);
         this.blueField.setDrawsBackground(false);
-        this.blueField.setText(String.valueOf(handler.getBlueColor()));
-        System.out.println(String.valueOf(handler.getBlueColor()) + "string");
-        System.out.println(handler.getBlueColor());
+        this.blueField.setText(String.valueOf(blueColor));
+        //System.out.println(String.valueOf(blueColor) + "string");
         this.blueField.setChangedListener(this::onChanged);
         this.addSelectableChild(this.blueField);
 
@@ -107,28 +113,31 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
 
     private void onChanged(String field) {
         if(isNumeric(this.redField.getText())){
-            handler.setRedColor(Integer.parseInt(this.redField.getText()));
-            isValid1 = handler.getRedColor() <= 255;
-            System.out.println(handler.getRedColor());
+            redColor = Integer.parseInt(this.redField.getText());
+            isValid1 = redColor <= 255;
+            System.out.println(redColor);
         } else{
             isValid1 = false;
         }
 
         if(isNumeric(this.greenField.getText())) {
-            handler.setGreenColor(Integer.parseInt(this.greenField.getText()));
-            isValid2 = handler.getGreenColor() <= 255;
+            greenColor = Integer.parseInt(this.greenField.getText());
+            isValid2 = greenColor <= 255;
 
         } else{
             isValid2 = false;
         }
 
         if(isNumeric(this.blueField.getText())) {
-            handler.setBlueColor(Integer.parseInt(this.blueField.getText()));
-            isValid3 = handler.getBlueColor() <= 255;
+            blueColor = Integer.parseInt(this.blueField.getText());
+            isValid3 = blueColor <= 255;
         } else{
             isValid3 = false;
         }
 
+        color = redColor * 65536 + greenColor * 256 + blueColor;
+        int[] array = new int[]{color};
+        ClientPlayNetworking.send(HexMessages.COLOR_ID, PacketByteBufs.create().writeIntArray(array));
 
     }
 

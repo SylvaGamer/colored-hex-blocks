@@ -11,6 +11,7 @@ import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.HexItemGroups;
 import net.shadowdragon.coloredhexblocks.item.HexItems;
+import net.shadowdragon.coloredhexblocks.networking.HexMessages;
 import net.shadowdragon.coloredhexblocks.recipe.HexRecipes;
 import net.shadowdragon.coloredhexblocks.screen.HexScreenHandler;
 import org.slf4j.Logger;
@@ -38,5 +39,6 @@ public class ColoredHexBlocks implements ModInitializer {
 		ModHexBlockEntities.registerBlockEntities();
 		HexScreenHandler.registerScreenHandler();
 		HexRecipes.registerRecipes();
+		HexMessages.registerC2SPackets();
 	}
 }
