@@ -15,5 +15,6 @@ public class ColorC2SPacket {
 
         int[] array = buf.readIntArray(4);
         DyingStationScreenHandler.color = array[0];
+
     }
 }

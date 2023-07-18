@@ -32,7 +32,7 @@ public class DyingStationScreenHandler extends ScreenHandler {
     final CraftingResultInventory output = new CraftingResultInventory();
     private final Inventory inventory;
     public final DyingStationBlockEntity blockEntity;
-    final Slot inputSlot;
+    Slot inputSlot;
     final Slot outputSlot;
     final Slot dyeSlot;
 
@@ -55,6 +55,9 @@ public class DyingStationScreenHandler extends ScreenHandler {
         this.blockEntity = ((DyingStationBlockEntity) blockEntity);
         this.inputSlot = this.addSlot(new Slot(this.input, 0, 62, 50));
         this.outputSlot = this.addSlot(new Slot(this.output, 1,116,50){
+
+
+
             @Override
             public boolean canInsert(ItemStack stack) {
                 return false;
