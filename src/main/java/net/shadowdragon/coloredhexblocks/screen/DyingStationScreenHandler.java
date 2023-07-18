@@ -8,15 +8,14 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.*;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlockEntity;
 
-import java.util.List;
-
 public class DyingStationScreenHandler extends ScreenHandler {
+    public int newColor;
     public static int color;
-
+    public static boolean validPacket;
 
     private ItemStack inputStack = ItemStack.EMPTY;
     Runnable contentsChangedListener = () -> {};
@@ -147,7 +146,7 @@ public class DyingStationScreenHandler extends ScreenHandler {
     @Override
     public void onContentChanged(Inventory inventory) {
         ItemStack itemStack = this.inputSlot.getStack();
-        if(itemStack.isEmpty()){
+        if(itemStack.isEmpty() ){
             this.outputSlot.setStack(ItemStack.EMPTY);
         }
         if (!itemStack.isOf(this.inputStack.getItem())) {
@@ -157,14 +156,38 @@ public class DyingStationScreenHandler extends ScreenHandler {
             ItemStack newStack = this.inputSlot.getStack().copy();
             this.outputSlot.setStack(newStack);
             this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
-            System.out.println(color + " The Color property should be this - - - - - -");
+            //System.out.println(color + " The Color property should be this - - - - - -");
         }
         this.sendContentUpdates();
     }
 
+    public boolean setNewColor(int color) {
+        if (!validPacket || color == this.newColor) {
+            return false;
+        }
+        this.newColor = color;
+        if (this.getSlot(2).hasStack()) {
+            ItemStack itemStack = this.getSlot(2).getStack();
+            itemStack.getOrCreateSubNbt("display").putInt("color", color);
+        }
 
+        this.updateResult();
+        return true;
 
+    }
 
+    private void updateResult() {
+        ItemStack itemStack = this.inputSlot.getStack();
+        if(itemStack.isEmpty()){
+            this.outputSlot.setStack(ItemStack.EMPTY);
+            return;
+        }
+        if (!itemStack.isOf(this.inputStack.getItem())) {
+            ItemStack newStack = this.inputSlot.getStack().copy();
+            this.outputSlot.setStack(newStack);
+            this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
+        }
+    }
 
 
 }

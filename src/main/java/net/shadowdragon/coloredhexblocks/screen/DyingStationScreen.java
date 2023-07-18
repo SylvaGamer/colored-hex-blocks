@@ -1,7 +1,6 @@
 package net.shadowdragon.coloredhexblocks.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
@@ -10,7 +9,6 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
@@ -138,6 +136,7 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         color = redColor * 65536 + greenColor * 256 + blueColor;
         int[] array = new int[]{color};
         ClientPlayNetworking.send(HexMessages.COLOR_ID, PacketByteBufs.create().writeIntArray(array));
+        handler.setNewColor(color);
 
     }
 
@@ -182,11 +181,15 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y){
-
+        boolean validPacket = true;
         if(!isValid1 || !isValid2 || !isValid3){
             context.drawTexture(TEXTURE, x + 86, y+50,176,19,22,15);
+            validPacket = false;
+        } else{
+            validPacket = true;
         }
-
+        ClientPlayNetworking.send(HexMessages.VALID_ID, PacketByteBufs.create().writeString(String.valueOf(validPacket)));
+        handler.setNewColor(color);
     }
 
     private void renderText(DrawContext context, int x, int y){
