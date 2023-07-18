@@ -5,12 +5,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -20,7 +18,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.shadowdragon.coloredhexblocks.block.ModHexBlockEntities;
 import net.shadowdragon.coloredhexblocks.recipe.HexBlockRecipe;
-import net.shadowdragon.coloredhexblocks.screen.DyingStationScreen;
 import net.shadowdragon.coloredhexblocks.screen.DyingStationScreenHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,61 +29,11 @@ public class DyingStationBlockEntity extends BlockEntity implements ExtendedScre
     private static final int INPUT_SLOT = 1;
     private static final int DYE_SLOT = 0;
     private  static final int OUTPUT_SLOT = 2;
-    protected final PropertyDelegate propertyDelegate;
-    private int progress = 0;
-    private int maxProgress = 72;
-    private int redColor = 255;
-    private int greenColor = 255;
-    private int blueColor = 255;
 
 
 
     public DyingStationBlockEntity(BlockPos pos, BlockState state) {
         super(ModHexBlockEntities.DYING_STATION_BE, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
-            @Override
-            public int get(int index) {
-                if (index == 0) {
-                    return DyingStationBlockEntity.this.progress;
-                } else if (index == 1) {
-                    return DyingStationBlockEntity.this.maxProgress;
-                } else if (index == 2) {
-                    return DyingStationBlockEntity.this.redColor;
-                } else if (index == 3) {
-                    return DyingStationBlockEntity.this.greenColor;
-                } else if (index == 4) {
-                    return DyingStationBlockEntity.this.blueColor;
-                }
-                throw new IllegalStateException("Unexpected value: " + index);
-            }
-
-            @Override
-            public void set(int index, int value) {
-                if (index == 0) {
-                    DyingStationBlockEntity.this.progress = value;
-                    System.out.println(index + " " + value);
-                } else if (index == 1) {
-                    DyingStationBlockEntity.this.maxProgress = value;
-                    System.out.println(index + " " + value);
-                } else if (index == 2) {
-                    DyingStationBlockEntity.this.redColor = value;
-                    System.out.println(index + " " + value);
-                } else if (index == 3) {
-                    DyingStationBlockEntity.this.greenColor = value;
-                    System.out.println(index + " " + value);
-                } else if (index == 4) {
-                    DyingStationBlockEntity.this.blueColor = value;
-                    System.out.println(index + " " + value);
-                } else {
-                    throw new IllegalStateException("Unexpected value: " + index);
-                }
-            }
-
-            @Override
-            public int size() {
-                return 5;
-            }
-        };
     }
 
 
@@ -154,6 +101,7 @@ public class DyingStationBlockEntity extends BlockEntity implements ExtendedScre
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
         buf.writeBlockPos(this.pos);
+
     }
 
     @Override
@@ -170,45 +118,22 @@ public class DyingStationBlockEntity extends BlockEntity implements ExtendedScre
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("dying_station.progress", progress);
-        nbt.putInt("dying_station.redColor", redColor);
-        nbt.putInt("dying_station.greenColor", greenColor);
-        nbt.putInt("dying_station.blueColor", blueColor);
     }
 
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        Inventories.readNbt(nbt, inventory);
-        progress = nbt.getInt("dying_station.progress");
-        redColor = nbt.getInt("dying_station.redColor");
-        greenColor = nbt.getInt("dying_station.greenColor");
-        blueColor = nbt.getInt("dying_station.blueColor");
         super.readNbt(nbt);
     }
 
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new DyingStationScreenHandler(syncId, playerInventory, this, propertyDelegate);
+        return new DyingStationScreenHandler(syncId, playerInventory, this);
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {
-        if(DyingStationScreen.isValid1 && DyingStationScreen.isValid2 && DyingStationScreen.isValid3){
-            if(canInsertIntoOutputSlot() && hasRecipe()){
-                increaseCraftingProgress();
-                markDirty(world, pos, state);
-                if(hasCraftingFinished()){
-                    craftItem();
-                    resetProgress();
-                }
-            } else {
-                resetProgress();
-            }
-        } else {
-            resetProgress();
-        }
+
 
     }
 
@@ -216,28 +141,18 @@ public class DyingStationBlockEntity extends BlockEntity implements ExtendedScre
     private void craftItem() {
         Optional<HexBlockRecipe> recipe = getCurrentRecipe();
 
-        this.removeStack(INPUT_SLOT, 1);
+        //this.removeStack(INPUT_SLOT, 1);
 
 
         ItemStack output = recipe.get().getOutput(null);
-        this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));
+        /*this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
+                this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));*/
 
-        int color = this.redColor * 65536 + this.greenColor * 256 + this.blueColor;
-        this.getStack(OUTPUT_SLOT).getOrCreateSubNbt("display").putInt("color", color);
+        /*int color = this.redColor * 65536 + this.greenColor * 256 + this.blueColor;
+        this.getStack(OUTPUT_SLOT).getOrCreateSubNbt("display").putInt("color", color);*/
     }
 
-    private void resetProgress() {
-        this.progress=0;
-    }
 
-    private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
-    }
-
-    private void increaseCraftingProgress() {
-        this.progress ++;
-    }
 
     private boolean hasRecipe() {
         Optional<HexBlockRecipe> recipe = getCurrentRecipe();

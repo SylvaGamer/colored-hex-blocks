@@ -1,89 +1,142 @@
 package net.shadowdragon.coloredhexblocks.screen;
 
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
-import net.shadowdragon.coloredhexblocks.block.ModHexBlockEntities;
-import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlock;
 import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlockEntity;
 
+import java.util.List;
+
 public class DyingStationScreenHandler extends ScreenHandler {
+    private final Property redProperty = Property.create();
+    private final Property blueProperty = Property.create();
+    private final Property greenProperty = Property.create();
+    private final Property colorProperty = Property.create();
+    private ItemStack inputStack = ItemStack.EMPTY;
+    Runnable contentsChangedListener = () -> {};
+    public final Inventory input = new SimpleInventory(1){
+
+        @Override
+        public void markDirty() {
+            super.markDirty();
+            DyingStationScreenHandler.this.onContentChanged(this);
+            DyingStationScreenHandler.this.contentsChangedListener.run();
+        }
+    };
+    final CraftingResultInventory output = new CraftingResultInventory();
     private final Inventory inventory;
-    private final PropertyDelegate propertyDelegate;
     public final DyingStationBlockEntity blockEntity;
+    final Slot inputSlot;
+    final Slot outputSlot;
+    final Slot dyeSlot;
+
+    PlayerInventory playerInventory;
+
+
+
+
 
     protected DyingStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-                new ArrayPropertyDelegate(5));
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
+        playerInventory = inventory;
     }
 
     public DyingStationScreenHandler(int syncId, PlayerInventory playerInventory,
-                                     BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
+                                     BlockEntity blockEntity) {
         super(HexScreenHandler.DYING_STATION_SCREEN_HANDLER, syncId);
-        checkSize(((Inventory) blockEntity),4);
+        checkSize(((Inventory) blockEntity),3);
         this.inventory = (Inventory) blockEntity;
-        this.propertyDelegate = propertyDelegate;
         this.blockEntity = ((DyingStationBlockEntity) blockEntity);
+        this.inputSlot = this.addSlot(new Slot(this.input, 0, 62, 50));
+        this.outputSlot = this.addSlot(new Slot(this.output, 1,116,50){
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false;
+            }
 
-        this.addSlot(new Slot(inventory, 0,33,19));
-        this.addSlot(new Slot(inventory, 1,62,50));
-        this.addSlot(new Slot(inventory, 2,116,50));
+            @Override
+            public void onTakeItem(PlayerEntity player, ItemStack stack) {
+                stack.onCraft(player.getWorld(), player, stack.getCount());
+                ItemStack itemStack = DyingStationScreenHandler.this.inputSlot.takeStack(1);
+                if(!itemStack.isEmpty()){
+                    DyingStationScreenHandler.this.populateResult();
+                }
+                super.onTakeItem(player, stack);
+            }
+
+
+        });
+
+
+
+
+        dyeSlot = this.addSlot(new Slot(this.inventory, 2,33,19));
+
         addPlayerHotbar(playerInventory);
         addPlayerInventory(playerInventory);
 
 
-        addProperties(propertyDelegate);
+        this.addProperty(this.colorProperty);
+        this.addProperty(this.redProperty);
+        this.addProperty(this.blueProperty);
+        this.addProperty(this.greenProperty);
+
 
     }
-    public boolean isCrafting(){
-        return propertyDelegate.get(0) > 0;
-    }
 
+    private void populateResult() {
+        this.sendContentUpdates();
+        ItemStack itemStack = this.inputSlot.getStack();
+        this.outputSlot.setStackNoCallbacks(itemStack);
 
-
-    public int getScaledProgress(){
-        int progress = this.propertyDelegate.get(0);
-        int maxProgress = this.propertyDelegate.get(1);
-        int progressArrowSize = 22;
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress:0;
     }
 
     public int getRedColor(){
-        return this.propertyDelegate.get(2);
+        this.sendContentUpdates();
+        return redProperty.get();
     }
 
     public int getGreenColor(){
-    return this.propertyDelegate.get(3);
+        this.sendContentUpdates();
+        return greenProperty.get();
     }
     public int getBlueColor(){
-        return this.propertyDelegate.get(4);
+        this.sendContentUpdates();
+        return blueProperty.get();
+    }
+
+    @Override
+    public boolean onButtonClick(PlayerEntity player, int id) {
+        this.populateResult();
+        return true;
     }
 
     public void setRedColor(int redColor){
-        System.out.println(this.propertyDelegate.get(2) + " old red");
-        this.propertyDelegate.set(2, redColor);
-        System.out.println(this.propertyDelegate.get(2) + " new red");
+        System.out.println(redColor + " old red");
+        this.redProperty.set(redColor);
+        onContentChanged(this.input);
+        System.out.println(this.redProperty.get() + " new red");
     }
 
     public void setGreenColor(int greenColor){
-        System.out.println(this.propertyDelegate.get(3) + " old green");
-        this.propertyDelegate.set(3, greenColor);
-        System.out.println(this.propertyDelegate.get(3) + " new green");
+        System.out.println(greenColor + " old green");
+        this.greenProperty.set(greenColor);
+        onContentChanged(this.input);
+        System.out.println(this.greenProperty.get() + " new green");
 
     }
     public void setBlueColor(int blueColor){
-        System.out.println(this.propertyDelegate.get(4) + " old blue");
-        this.propertyDelegate.set(4,blueColor);
-        System.out.println(this.propertyDelegate.get(4) + " new blue");
+        System.out.println(blueColor + " old blue");
+        this.blueProperty.set(blueColor);
+        onContentChanged(this.input);
+        System.out.println(this.blueProperty.get() + " new blue");
     }
 
 
@@ -128,5 +181,20 @@ public class DyingStationScreenHandler extends ScreenHandler {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
+
+    @Override
+    public void onContentChanged(Inventory inventory) {
+        ItemStack itemStack = this.inputSlot.getStack();
+        if (!itemStack.isOf(this.inputStack.getItem())) {
+            this.inputStack = itemStack.copy();
+
+            this.colorProperty.set(this.redProperty.get() * 65536 + this.greenProperty.get() * 256 + this.blueProperty.get());
+            this.outputSlot.setStack(this.inputSlot.getStack());
+            System.out.println(colorProperty.get() + "The Color property should be this - - - - - -");
+        }
+        this.sendContentUpdates();
+    }
+
+
 
 }

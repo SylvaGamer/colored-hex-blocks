@@ -1,25 +1,26 @@
 package net.shadowdragon.coloredhexblocks.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import io.netty.buffer.ByteBuf;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.packet.c2s.play.RenameItemC2SPacket;
-import net.minecraft.screen.AnvilScreenHandler;
-import net.minecraft.screen.slot.Slot;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.shadowdragon.coloredhexblocks.ColoredHexBlocks;
-import net.shadowdragon.coloredhexblocks.block.craftingstation.DyingStationBlockEntity;
 import org.lwjgl.glfw.GLFW;
 
+
+
 public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler> {
-    public static boolean isValid1 = false;
-    public static boolean isValid2 = false;
-    public static boolean isValid3 = false;
+    public static boolean isValid1 = true;
+    public static boolean isValid2 = true;
+    public static boolean isValid3 = true;
     private static final Identifier TEXTURE =
             new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dying_station_gui.png");
 
@@ -127,6 +128,8 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         } else{
             isValid3 = false;
         }
+
+
     }
 
     @Override
@@ -170,11 +173,7 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y){
-        if(handler.isCrafting()){
-            if(isValid1 && isValid2 && isValid3){
-                context.drawTexture(TEXTURE, x + 86, y + 50, 176, 0, handler.getScaledProgress(), 16);
-            }
-        }
+
         if(!isValid1 || !isValid2 || !isValid3){
             context.drawTexture(TEXTURE, x + 86, y+50,176,19,22,15);
         }
@@ -202,6 +201,5 @@ public class DyingStationScreen extends HandledScreen<DyingStationScreenHandler>
         this.redField.render(context,mouseX,mouseY,delta);
         this.greenField.render(context, mouseX, mouseY, delta);
         this.blueField.render(context, mouseX, mouseY, delta);
-
     }
 }
