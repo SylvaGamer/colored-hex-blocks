@@ -11,13 +11,12 @@ import net.shadowdragon.coloredhexblocks.block.ModHexBlocks;
 import net.shadowdragon.coloredhexblocks.block.coloredblocks.HexBlockEntity;
 import net.shadowdragon.coloredhexblocks.item.HexItemGroups;
 import net.shadowdragon.coloredhexblocks.item.HexItems;
-import net.shadowdragon.coloredhexblocks.networking.HexMessages;
 import net.shadowdragon.coloredhexblocks.recipe.HexRecipes;
 import net.shadowdragon.coloredhexblocks.screen.HexScreenHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import static net.shadowdragon.coloredhexblocks.block.ModHexBlocks.HEX_BLOCK;
-import static net.shadowdragon.coloredhexblocks.block.ModHexBlocks.registerModBlocks;
 
 public class ColoredHexBlocks implements ModInitializer {
 
@@ -39,6 +38,7 @@ public class ColoredHexBlocks implements ModInitializer {
 		ModHexBlockEntities.registerBlockEntities();
 		HexScreenHandler.registerScreenHandler();
 		HexRecipes.registerRecipes();
-		HexMessages.registerC2SPackets();
+
+
 	}
 }

@@ -19,9 +19,9 @@ import org.lwjgl.glfw.GLFW;
 
 
 public class DyeingStationScreen extends HandledScreen<DyeingStationScreenHandler> {
-    public static boolean isValid1 = true;
-    public static boolean isValid2 = true;
-    public static boolean isValid3 = true;
+    public boolean isValid1 = true;
+    public boolean isValid2 = true;
+    public boolean isValid3 = true;
     private static final Identifier TEXTURE =
             new Identifier(ColoredHexBlocks.MOD_ID, "textures/gui/dyeing_station_gui.png");
 
@@ -114,30 +114,30 @@ public class DyeingStationScreen extends HandledScreen<DyeingStationScreenHandle
     private void onChanged(String field) {
 
         if(StringUtils.isNumeric(this.redField.getText())){
-            redColor = Integer.parseInt(this.redField.getText());
-            isValid1 = redColor <= 255;
+            this.redColor = Integer.parseInt(this.redField.getText());
+            this.isValid1 = this.redColor <= 255;
 
         } else{
-            isValid1 = false;
+            this.isValid1 = false;
         }
 
         if(StringUtils.isNumeric(this.greenField.getText())) {
-            greenColor = Integer.parseInt(this.greenField.getText());
-            isValid2 = greenColor <= 255;
+            this.greenColor = Integer.parseInt(this.greenField.getText());
+            this.isValid2 = this.greenColor <= 255;
 
         } else{
-            isValid2 = false;
+            this.isValid2 = false;
         }
 
         if(StringUtils.isNumeric(this.blueField.getText())) {
-            blueColor = Integer.parseInt(this.blueField.getText());
-            isValid3 = blueColor <= 255;
+            this.blueColor = Integer.parseInt(this.blueField.getText());
+            this.isValid3 = this.blueColor <= 255;
         } else{
-            isValid3 = false;
+            this.isValid3 = false;
         }
 
-        color = (redColor * 65536) + (greenColor * 256) + blueColor;
-        int[] array = new int[]{color};
+        this.color = (this.redColor * 65536) + (this.greenColor * 256) + this.blueColor;
+        int[] array = new int[]{this.color};
         ClientPlayNetworking.send(HexMessages.COLOR_ID, PacketByteBufs.create().writeIntArray(array));
 
 
@@ -192,7 +192,6 @@ public class DyeingStationScreen extends HandledScreen<DyeingStationScreenHandle
             validPacket = true;
         }
         ClientPlayNetworking.send(HexMessages.VALID_ID, PacketByteBufs.create().writeString(String.valueOf(validPacket)));
-
     }
 
     private void renderText(DrawContext context, int x, int y){

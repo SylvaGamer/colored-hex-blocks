@@ -1,5 +1,6 @@
 package net.shadowdragon.coloredhexblocks.screen;
 
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -12,8 +13,11 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.shadowdragon.coloredhexblocks.block.craftingstation.DyeingStationBlockEntity;
 
+import static net.shadowdragon.coloredhexblocks.networking.HexMessages.COLOR_ID;
+
 public class DyeingStationScreenHandler extends ScreenHandler {
-    public static int color;
+
+
     public static boolean validPacket;
 
     private ItemStack inputStack = ItemStack.EMPTY;
@@ -29,6 +33,7 @@ public class DyeingStationScreenHandler extends ScreenHandler {
     };
     final CraftingResultInventory output = new CraftingResultInventory();
     private final Inventory inventory;
+    public int color;
     public final DyeingStationBlockEntity blockEntity;
     Slot inputSlot;
     final Slot outputSlot;
@@ -43,7 +48,23 @@ public class DyeingStationScreenHandler extends ScreenHandler {
     protected DyeingStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
         playerInventory = inventory;
+        registerPacket();
+
+
     }
+
+
+    public void registerPacket(){
+        ServerPlayNetworking.registerGlobalReceiver(COLOR_ID, (server, player, handler, buf, responseSender) ->{
+            int[] array = buf.readIntArray(4);
+            server.execute(() ->{
+                DyeingStationScreenHandler.this.color = array[0];
+                System.out.println(DyeingStationScreenHandler.this.color + " this is the color on the packet register code");
+
+            });
+        });
+    }
+
 
     public DyeingStationScreenHandler(int syncId, PlayerInventory playerInventory,
                                       BlockEntity blockEntity) {
@@ -53,8 +74,6 @@ public class DyeingStationScreenHandler extends ScreenHandler {
         this.blockEntity = ((DyeingStationBlockEntity) blockEntity);
         this.inputSlot = this.addSlot(new Slot(this.input, 0, 62, 50));
         this.outputSlot = this.addSlot(new Slot(this.output, 1,116,50){
-
-
 
             @Override
             public boolean canInsert(ItemStack stack) {
@@ -72,11 +91,9 @@ public class DyeingStationScreenHandler extends ScreenHandler {
             }
 
 
+
+
         });
-
-
-
-
         dyeSlot = this.addSlot(new Slot(this.inventory, 2,33,19));
 
         addPlayerHotbar(playerInventory);
@@ -84,6 +101,8 @@ public class DyeingStationScreenHandler extends ScreenHandler {
 
 
     }
+
+
 
     private void populateResult() {
         this.sendContentUpdates();
@@ -154,23 +173,11 @@ public class DyeingStationScreenHandler extends ScreenHandler {
 
             ItemStack newStack = this.inputSlot.getStack().copy();
             this.outputSlot.setStack(newStack);
-            this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
+
+            System.out.println(this.color + " this is the color before nbt");
+            this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", this.color);
             //System.out.println(color + " The Color property should be this - - - - - -");
         }
         this.sendContentUpdates();
-    }
-
-
-    private void updateResult() {
-        ItemStack itemStack = this.inputSlot.getStack();
-        if(itemStack.isEmpty()){
-            this.outputSlot.setStack(ItemStack.EMPTY);
-            return;
-        }
-        if (!itemStack.isOf(this.inputStack.getItem())) {
-            ItemStack newStack = this.inputSlot.getStack().copy();
-            this.outputSlot.setStack(newStack);
-            this.outputSlot.getStack().getOrCreateSubNbt("display").putInt("color", color);
-        }
     }
 }
