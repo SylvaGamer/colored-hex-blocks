@@ -1,0 +1,11 @@
+{
+  "block.coloredhexblocks.hex_block": "Hex Block",
+  "block.coloredhexblocks.hex_stairs": "Hex Stairs",
+  "block.coloredhexblocks.hex_slab": "Hex Slab",
+  "block.coloredhexblocks.hex_wall": "Hex Wall",
+  "block.coloredhexblocks.hex_fence": "Hex Fence",
+  "block.coloredhexblocks.hex_fence_gate": "Hex Fence Gate",
+  "block.coloredhexblocks.hex_glass": "Hex Glass",
+  "block.coloredhexblocks.hex_glass_pane": "Hex Glass Pane",
+  "itemgroup.coloredhexblocks.colored_hex_blocks": "Colored Hex Blocks"
+}
