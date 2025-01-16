@@ -1,37 +1,37 @@
 {
 	"schemaVersion": 1,
-	"id": "colored-hex-blocks",
+	"id": "coloredhexblocks",
 	"version": "${version}",
 	"name": "Colored Hex Blocks",
-	"description": "This is a mod that adds a block you can dye similarly to leather armor",
+	"description": "This mod adds dyeable flat blocks (similar to leather armor)",
 	"authors": [
-		"ShadowDragon"
+		"Sylva Gamer"
 	],
 	"contact": {
-		"homepage": "https://github.com/ShadowDragonMinecraft/colored-hex-blocks/wiki",
-		"sources": "https://github.com/ShadowDragonMinecraft/colored-hex-blocks"
+		"homepage": "https://sylvagamer.github.io",
+		"sources": "https://github.com/SylvaGamer/colored-hex-blocks"
 	},
-	"license": "GPL-3.0",
-	"icon": "assets/colored-hex-blocks/icon.png",
+	"license": "CC0-1.0",
+	"icon": "assets/coloredhexblocks/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"fabric-datagen": [
-			"net.shadowdragon.coloredhexblocks.DataGeneration"
-		],
 		"main": [
-			"net.shadowdragon.coloredhexblocks.ColoredHexBlocks"
+			"sylvagamer.coloredhexblocks.ColoredHexBlocks"
+		],
+		"fabric-datagen": [
+			"sylvagamer.coloredhexblocks.ColoredHexBlocksDataGenerator"
 		],
 		"client": [
-			"net.shadowdragon.coloredhexblocks.ColoredHexBlocksClient"
+			"sylvagamer.coloredhexblocks.ColoredHexBlocksClient"
 		]
 	},
 	"mixins": [
-		"colored-hex-blocks.mixins.json"
+		"coloredhexblocks.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20",
-		"java": ">=17",
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
 		"fabric-api": "*"
 	},
 	"suggests": {
