@@ -1,4 +1,4 @@
-package sylvagamer.coloredhexblocks.mixin;
+package net.sylvagamer.coloredhexblocks.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

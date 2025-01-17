@@ -1,4 +1,4 @@
-package sylvagamer.coloredhexblocks.block;
+package net.sylvagamer.coloredhexblocks.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
@@ -12,14 +12,15 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import sylvagamer.coloredhexblocks.ColoredHexBlocks;
+import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
+import net.sylvagamer.coloredhexblocks.block.custom.HexBlock;
 
 public class ModBlocks {
 
     public static final Block HEX_BLOCK = registerBlock("hex_block",
-            new Block(AbstractBlock.Settings.create()
+            new HexBlock(AbstractBlock.Settings.create()
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID,"hex_block")))
-                    .strength(4f).requiresTool().sounds(BlockSoundGroup.STONE)));
+                    .strength(1.8f).requiresTool().sounds(BlockSoundGroup.STONE)));
 
 
     private static Block registerBlock(String name, Block block){

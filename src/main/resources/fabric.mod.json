@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"sylvagamer.coloredhexblocks.ColoredHexBlocks"
+			"net.sylvagamer.coloredhexblocks.ColoredHexBlocks"
 		],
 		"fabric-datagen": [
-			"sylvagamer.coloredhexblocks.ColoredHexBlocksDataGenerator"
+			"net.sylvagamer.coloredhexblocks.ColoredHexBlocksDataGenerator"
 		],
 		"client": [
-			"sylvagamer.coloredhexblocks.ColoredHexBlocksClient"
+			"net.sylvagamer.coloredhexblocks.ColoredHexBlocksClient"
 		]
 	},
 	"mixins": [

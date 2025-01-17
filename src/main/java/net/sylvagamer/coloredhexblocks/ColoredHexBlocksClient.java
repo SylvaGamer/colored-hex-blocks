@@ -1,4 +1,4 @@
-package sylvagamer.coloredhexblocks;
+package net.sylvagamer.coloredhexblocks;
 
 
 import net.fabricmc.api.ClientModInitializer;

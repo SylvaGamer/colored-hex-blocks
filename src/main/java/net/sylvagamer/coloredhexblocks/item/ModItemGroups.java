@@ -1,4 +1,4 @@
-package sylvagamer.coloredhexblocks.item;
+package net.sylvagamer.coloredhexblocks.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -7,8 +7,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import sylvagamer.coloredhexblocks.ColoredHexBlocks;
-import sylvagamer.coloredhexblocks.block.ModBlocks;
+import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
+import net.sylvagamer.coloredhexblocks.block.ModBlocks;
 
 public class ModItemGroups {
 
