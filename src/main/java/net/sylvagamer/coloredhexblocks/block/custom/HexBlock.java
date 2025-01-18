@@ -1,6 +1,8 @@
 package net.sylvagamer.coloredhexblocks.block.custom;
 
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -18,11 +20,14 @@ public class HexBlock extends Block implements HexBlockInterface, BlockEntityPro
     @Override
     protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
         ItemStack stack = super.getPickStack(world,pos,state,includeData);
-        return stack;
+        return pickBlock(world, pos, stack, includeData);
     }
 
     @Override
     public BlockState getAppearance(BlockState state, BlockRenderView renderView, BlockPos pos, Direction side, @Nullable BlockState sourceState, @Nullable BlockPos sourcePos) {
         return super.getAppearance(state, renderView, pos, side, sourceState, sourcePos);
     }
+
+
+
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "coloredhexblocks:block/hex_glass",
-  "textures": {
-    "layer0": "coloredhexblocks:block/hex_glass"
-  }
-}
