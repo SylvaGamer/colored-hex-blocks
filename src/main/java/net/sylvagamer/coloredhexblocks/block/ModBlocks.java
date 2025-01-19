@@ -14,6 +14,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
 import net.sylvagamer.coloredhexblocks.block.custom.HexBlock;
+import net.sylvagamer.coloredhexblocks.block.custom.HexFence;
 
 public class ModBlocks {
 
@@ -22,6 +23,10 @@ public class ModBlocks {
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID,"hex_block")))
                     .strength(1.8f).requiresTool().sounds(BlockSoundGroup.STONE)));
 
+    public static final Block HEX_FENCE = registerBlock("hex_fence",
+            new HexFence(AbstractBlock.Settings.create()
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID, "hex_fence")))
+                    .strength(1.8f).requiresTool().sounds(BlockSoundGroup.STONE)));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);
@@ -40,6 +45,7 @@ public class ModBlocks {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.HEX_BLOCK);
+            entries.add(ModBlocks.HEX_FENCE);
         });
     }
 }

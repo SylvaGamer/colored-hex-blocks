@@ -17,6 +17,7 @@ public class ModItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.HEX_BLOCK)).displayName(Text.translatable("itemgroup.coloredhexblocks.colored_hex_blocks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.HEX_BLOCK);
+                        entries.add(ModBlocks.HEX_FENCE);
 
                     }).build()
     );

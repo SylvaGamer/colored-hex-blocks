@@ -4,9 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
+import net.sylvagamer.coloredhexblocks.block.ModBlocks;
+import net.sylvagamer.coloredhexblocks.block.custom.HexFence;
 import net.sylvagamer.coloredhexblocks.util.ModTags;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,6 +38,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.PURPLE_DYE)
                 .add(Items.MAGENTA_DYE)
                 .add(Items.PINK_DYE);
+
+
 
     }
 }

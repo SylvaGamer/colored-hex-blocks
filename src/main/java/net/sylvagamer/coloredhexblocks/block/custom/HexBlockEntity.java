@@ -3,7 +3,6 @@ package net.sylvagamer.coloredhexblocks.block.custom;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
-import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.nbt.NbtCompound;
@@ -14,10 +13,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
-import org.apache.commons.lang3.ObjectUtils;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 public class HexBlockEntity extends BlockEntity {
 
@@ -30,7 +26,6 @@ public class HexBlockEntity extends BlockEntity {
 
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
-        //nbt.putInt("number", number);
         nbt.putInt("color", color);
         super.writeNbt(nbt, registries);
     }
