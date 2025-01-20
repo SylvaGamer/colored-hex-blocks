@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "coloredhexblocks:item/hex_glass_pane",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": 16777215
+      }
+    ]
+  }
+}

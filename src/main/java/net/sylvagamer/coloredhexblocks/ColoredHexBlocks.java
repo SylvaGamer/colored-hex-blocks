@@ -20,11 +20,9 @@ public class ColoredHexBlocks implements ModInitializer {
 	public static final String MOD_ID = "coloredhexblocks";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final BlockEntityType<HexBlockEntity> HEX_BLOCK_ENTITY = Registry.register(
-			Registries.BLOCK_ENTITY_TYPE,
-			Identifier.of(ColoredHexBlocks.MOD_ID, "hex_block_entity"),
-			FabricBlockEntityTypeBuilder.create(HexBlockEntity::new, HEX_BLOCK).build()
-	);
+
+
+
 
 
 
@@ -33,6 +31,7 @@ public class ColoredHexBlocks implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.initialize();
 	}
 
 

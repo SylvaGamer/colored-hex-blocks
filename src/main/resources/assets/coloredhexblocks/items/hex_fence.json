@@ -1,7 +1,7 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "coloredhexblocks:block/hex_fence",
+    "model": "coloredhexblocks:item/hex_fence",
     "tints": [
       {
         "type": "minecraft:dye",

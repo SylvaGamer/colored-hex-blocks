@@ -18,6 +18,17 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.HEX_BLOCK);
                         entries.add(ModBlocks.HEX_FENCE);
+                        entries.add(ModBlocks.HEX_FENCE_GATE);
+                        entries.add(ModBlocks.HEX_STAIRS);
+                        entries.add(ModBlocks.HEX_SLAB);
+                        entries.add(ModBlocks.HEX_WOODEN_DOOR);
+                        entries.add(ModBlocks.HEX_WOODEN_TRAPDOOR);
+                        entries.add(ModBlocks.HEX_IRON_DOOR);
+                        entries.add(ModBlocks.HEX_IRON_TRAPDOOR);
+                        entries.add(ModBlocks.HEX_BUTTON);
+                        entries.add(ModBlocks.HEX_PRESSURE_PLATE);
+                        entries.add(ModBlocks.HEX_WALL);
+
 
                     }).build()
     );

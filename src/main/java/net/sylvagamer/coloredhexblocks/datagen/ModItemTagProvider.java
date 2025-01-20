@@ -39,7 +39,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.MAGENTA_DYE)
                 .add(Items.PINK_DYE);
 
-
-
+        getOrCreateTagBuilder(ItemTags.DYEABLE)
+                .add(ModBlocks.HEX_BLOCK.asItem())
+                .add(ModBlocks.HEX_FENCE.asItem())
+                .add(ModBlocks.HEX_FENCE_GATE.asItem())
+                .add(ModBlocks.HEX_WALL.asItem())
+                .add(ModBlocks.HEX_WOODEN_DOOR.asItem())
+                .add(ModBlocks.HEX_WOODEN_TRAPDOOR.asItem())
+                .add(ModBlocks.HEX_IRON_TRAPDOOR.asItem())
+                .add(ModBlocks.HEX_IRON_DOOR.asItem())
+                .add(ModBlocks.HEX_SLAB.asItem())
+                .add(ModBlocks.HEX_BUTTON.asItem())
+                .add(ModBlocks.HEX_PRESSURE_PLATE.asItem())
+                .add(ModBlocks.HEX_STAIRS.asItem())
+                ;
     }
 }

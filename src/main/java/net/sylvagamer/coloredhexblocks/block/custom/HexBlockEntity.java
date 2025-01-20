@@ -2,6 +2,7 @@ package net.sylvagamer.coloredhexblocks.block.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.DyedColorComponent;
@@ -13,14 +14,16 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockRenderView;
 import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
+import net.sylvagamer.coloredhexblocks.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class HexBlockEntity extends BlockEntity {
 
     public static final int DEFAULT_COLOR = 16777215;
     public int color = DEFAULT_COLOR;
-    public HexBlockEntity(BlockPos pos, BlockState state){
-        super(ColoredHexBlocks.HEX_BLOCK_ENTITY, pos, state);
+
+    public HexBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.HEX_BLOCK_ENTITY,pos, state);
     }
 
 
