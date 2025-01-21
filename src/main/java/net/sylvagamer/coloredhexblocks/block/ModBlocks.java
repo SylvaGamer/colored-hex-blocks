@@ -86,11 +86,11 @@ public class ModBlocks {
                             .strength(1.8f).requiresTool().nonOpaque()));
 
     public static final Block HEX_GLASS_BLOCK = registerBlock("hex_glass",
-            new HexGlassBlock(DyeColor.WHITE, AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS)
+            new HexGlassBlock(AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS)
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID, "hex_glass")))));
 
     public static final Block HEX_GLASS_PANE = registerBlock("hex_glass_pane",
-            new HexGlassPaneBlock(DyeColor.WHITE, AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS_PANE)
+            new HexGlassPaneBlock(AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS_PANE)
                     .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID, "hex_glass_pane")))));
 
     private static Block registerBlock(String name, Block block){

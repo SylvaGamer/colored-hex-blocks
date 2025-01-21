@@ -1,0 +1,7 @@
+// 1.21.4	-999999999-01-01T00:00:00	Colored Hex Blocks/Tags for minecraft:block
+faacf6f049752a0f2020bfbe1409e2d50d0f9b42 data/minecraft/tags/block/doors.json
+a6120488a91eb3860edfd7fa9142db90ee4cccad data/minecraft/tags/block/fence_gates.json
+cc20732267a24902b3bac787c139c30ed81e4383 data/minecraft/tags/block/fences.json
+e7ab595227a27b3a4952424ae1b8d7878beda18e data/minecraft/tags/block/mineable/pickaxe.json
+f6b77b827cb0a24d426f90a64d2096fce0669057 data/minecraft/tags/block/mob_interactable_doors.json
+6dd9cea852ca23407fe222a159f61a7751f0e45f data/minecraft/tags/block/walls.json

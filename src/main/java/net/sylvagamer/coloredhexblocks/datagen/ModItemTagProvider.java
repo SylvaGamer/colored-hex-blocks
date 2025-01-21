@@ -50,6 +50,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.HEX_BUTTON.asItem())
                 .add(ModBlocks.HEX_PRESSURE_PLATE.asItem())
                 .add(ModBlocks.HEX_STAIRS.asItem())
+                .add(ModBlocks.HEX_GLASS_BLOCK.asItem())
+                .add(ModBlocks.HEX_GLASS_PANE.asItem())
                 ;
 
 

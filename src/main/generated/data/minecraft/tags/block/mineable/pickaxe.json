@@ -1,0 +1,17 @@
+{
+  "values": [
+    "coloredhexblocks:hex_block",
+    "coloredhexblocks:hex_fence",
+    "coloredhexblocks:hex_wall",
+    "coloredhexblocks:hex_fence_gate",
+    "coloredhexblocks:hex_iron_door",
+    "coloredhexblocks:hex_iron_trapdoor",
+    "coloredhexblocks:hex_fence_gate",
+    "coloredhexblocks:hex_button",
+    "coloredhexblocks:hex_pressure_plate",
+    "coloredhexblocks:hex_slab",
+    "coloredhexblocks:hex_wooden_door",
+    "coloredhexblocks:hex_wooden_trapdoor",
+    "coloredhexblocks:hex_stairs"
+  ]
+}

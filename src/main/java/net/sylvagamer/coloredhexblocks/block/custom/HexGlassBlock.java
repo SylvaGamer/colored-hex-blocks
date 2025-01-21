@@ -3,6 +3,7 @@ package net.sylvagamer.coloredhexblocks.block.custom;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StainedGlassBlock;
+import net.minecraft.block.TransparentBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.component.DataComponentTypes;
@@ -23,9 +24,9 @@ import net.sylvagamer.coloredhexblocks.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 
-public class HexGlassBlock extends StainedGlassBlock implements BlockEntityProvider {
-    public HexGlassBlock(DyeColor dyeColor, Settings settings) {
-        super(dyeColor, settings);
+public class HexGlassBlock extends TransparentBlock implements BlockEntityProvider {
+    public HexGlassBlock(Settings settings) {
+        super(settings);
     }
 
     @Override
