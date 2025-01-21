@@ -4,10 +4,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.sylvagamer.coloredhexblocks.block.ModBlocks;
-import net.sylvagamer.coloredhexblocks.block.custom.HexFence;
 import net.sylvagamer.coloredhexblocks.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -53,5 +51,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.HEX_PRESSURE_PLATE.asItem())
                 .add(ModBlocks.HEX_STAIRS.asItem())
                 ;
+
+
     }
 }

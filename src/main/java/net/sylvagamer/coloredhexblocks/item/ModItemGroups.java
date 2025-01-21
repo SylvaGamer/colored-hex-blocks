@@ -28,6 +28,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.HEX_BUTTON);
                         entries.add(ModBlocks.HEX_PRESSURE_PLATE);
                         entries.add(ModBlocks.HEX_WALL);
+                        entries.add(ModBlocks.HEX_GLASS_BLOCK);
+                        entries.add(ModBlocks.HEX_GLASS_PANE);
+
+
 
 
                     }).build()

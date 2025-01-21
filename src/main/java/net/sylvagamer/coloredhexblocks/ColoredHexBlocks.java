@@ -1,20 +1,11 @@
 package net.sylvagamer.coloredhexblocks;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.sylvagamer.coloredhexblocks.block.custom.HexBlock;
-import net.sylvagamer.coloredhexblocks.block.custom.HexBlockEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import net.sylvagamer.coloredhexblocks.block.ModBlocks;
 import net.sylvagamer.coloredhexblocks.item.ModItemGroups;
 import net.sylvagamer.coloredhexblocks.item.ModItems;
-import static net.sylvagamer.coloredhexblocks.block.ModBlocks.HEX_BLOCK;
-import static net.sylvagamer.coloredhexblocks.block.ModBlocks.HEX_FENCE;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ColoredHexBlocks implements ModInitializer {
 	public static final String MOD_ID = "coloredhexblocks";

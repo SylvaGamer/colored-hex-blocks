@@ -10,6 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.sylvagamer.coloredhexblocks.ColoredHexBlocks;
 import net.sylvagamer.coloredhexblocks.block.custom.*;
@@ -84,7 +85,13 @@ public class ModBlocks {
                             .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID,"hex_wooden_trapdoor")))
                             .strength(1.8f).requiresTool().nonOpaque()));
 
+    public static final Block HEX_GLASS_BLOCK = registerBlock("hex_glass",
+            new HexGlassBlock(DyeColor.WHITE, AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS)
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID, "hex_glass")))));
 
+    public static final Block HEX_GLASS_PANE = registerBlock("hex_glass_pane",
+            new HexGlassPaneBlock(DyeColor.WHITE, AbstractBlock.Settings.copy(Blocks.WHITE_STAINED_GLASS_PANE)
+                    .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ColoredHexBlocks.MOD_ID, "hex_glass_pane")))));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);
@@ -114,6 +121,8 @@ public class ModBlocks {
             entries.add(ModBlocks.HEX_FENCE_GATE);
             entries.add(ModBlocks.HEX_PRESSURE_PLATE);
             entries.add(ModBlocks.HEX_STAIRS);
+            entries.add(ModBlocks.HEX_GLASS_BLOCK);
+            entries.add(ModBlocks.HEX_GLASS_PANE);
         });
     }
 }

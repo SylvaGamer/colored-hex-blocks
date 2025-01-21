@@ -39,5 +39,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.HEX_WALL);
 
+
+        getOrCreateTagBuilder(BlockTags.DOORS)
+                .add(ModBlocks.HEX_IRON_DOOR)
+                .add(ModBlocks.HEX_WOODEN_DOOR);
+
+        getOrCreateTagBuilder(BlockTags.MOB_INTERACTABLE_DOORS)
+                .add(ModBlocks.HEX_WOODEN_DOOR);
     }
+
 }
