@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "coloredhexblocks:block/hex_slab"
+    },
+    "type=double": {
+      "model": "coloredhexblocks:block/hex_block"
+    },
+    "type=top": {
+      "model": "coloredhexblocks:block/hex_slab_top"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "block.coloredhexblocks.hex_block": "Hex Block",
+  "block.coloredhexblocks.hex_stairs": "Hex Stairs",
+  "block.coloredhexblocks.hex_slab": "Hex Slab",
+  "block.coloredhexblocks.hex_wall": "Hex Wall",
+  "block.coloredhexblocks.hex_fence": "Hex Fence",
+  "block.coloredhexblocks.hex_fence_gate": "Hex Fence Gate",
+  "block.coloredhexblocks.hex_pressure_plate": "Hex Pressure Plate",
+  "block.coloredhexblocks.hex_button": "Hex Button",
+  "block.coloredhexblocks.hex_wooden_door": "Hex Wooden Door",
+  "block.coloredhexblocks.hex_wooden_trapdoor": "Hex Wooden Trapdoor",
+  "block.coloredhexblocks.hex_iron_door": "Hex Iron Door",
+  "block.coloredhexblocks.hex_iron_trapdoor": "Hex Iron Trapdoor",
+
+
+
+  "block.coloredhexblocks.hex_glass": "Hex Glass",
+  "block.coloredhexblocks.hex_glass_pane": "Hex Glass Pane",
+  "itemgroup.coloredhexblocks.colored_hex_blocks": "Colored Hex Blocks"
+}
